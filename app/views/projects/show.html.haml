@@ -1,4 +1,5 @@
 = @title = title(@project.name, "Projects")
 
 = @project.name
+= link_to "Edit Project", edit_project_path(@project)
 = @project.description
