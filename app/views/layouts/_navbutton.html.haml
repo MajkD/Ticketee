@@ -1,0 +1,6 @@
+- if current_page?(path)
+  %li.active
+    = link_to name, path
+- else
+  %li.inactive
+    = link_to name, path
