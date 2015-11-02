@@ -1,0 +1,7 @@
+%header
+  %h1
+    Edit TIcket
+    %small
+      = @project.name
+
+= render "form", project: @project, ticket: @ticket
