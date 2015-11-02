@@ -26,8 +26,19 @@
 
         .collapse.navbar-collapse{"id"=>'collapse'}
           %ul.nav.navbar-nav
+            - if user_signed_in?
+              %div.navbar-right
+                %p.navbar-text
+                  Signed in as
+                  = current_user.email
+                %ul.nav.navbar-nav
+                  %li
+                    = link_to "Sign out", destroy_user_session_path, method: :delete
+
             = render "layouts/navbutton", name: "Home", path: root_path
-            = render "layouts/navbutton", name: "Sign up", path: new_user_registration_path
+            - unless user_signed_in?
+              = render "layouts/navbutton", name: "Sign up", path: new_user_registration_path
+              = render "layouts/navbutton", name: "Sign in", path: new_user_session_path
 
     .container
       - if !flash.empty?
