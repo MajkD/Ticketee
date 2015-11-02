@@ -1,10 +1,12 @@
-%h1
-  Projects
+%header
+  %h1
+    Projects
 
-= link_to "New Project", new_project_path
+    %ul.actions
+      = link_to "New Project", new_project_path, class: "new"
 
 %div{'id'=>'projects'}
-  = @projects.each do |project|
+  - @projects.each do |project|
     %h2
       = link_to project.name, project
     %p
