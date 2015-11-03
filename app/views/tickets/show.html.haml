@@ -2,6 +2,18 @@
   %header
     %h1
       = @project.name
+    %table{'id'=>'attributes'}
+      %tr
+        %th
+          Author:
+        %td
+          = @ticket.author.email
+      %tr
+        %th
+          Created:
+        %td
+          = time_ago_in_words(@ticket.created_at)
+          ago
 
   %header
     %h2

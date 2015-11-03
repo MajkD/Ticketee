@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151102155742) do
+ActiveRecord::Schema.define(version: 20151103130710) do
 
   create_table "projects", force: true do |t|
     t.string   "name"
@@ -26,8 +26,10 @@ ActiveRecord::Schema.define(version: 20151102155742) do
     t.integer  "project_id"
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
+    t.integer  "author_id"
   end
 
+  add_index "tickets", ["author_id"], name: "index_tickets_on_author_id", using: :btree
   add_index "tickets", ["project_id"], name: "index_tickets_on_project_id", using: :btree
 
   create_table "users", force: true do |t|
@@ -47,5 +49,8 @@ ActiveRecord::Schema.define(version: 20151102155742) do
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
+
+  Foreigner.load
+  add_foreign_key "tickets", "users", name: "tickets_author_id_fk", column: "author_id"
 
 end
