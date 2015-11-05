@@ -27,6 +27,8 @@
         .collapse.navbar-collapse{"id"=>'collapse'}
           %ul.nav.navbar-nav
             = render "layouts/navbutton", name: "Home", path: root_path
+            - admins_only do
+              = render "layouts/navbutton", name: "Admin", path: admin_root_path
             - unless user_signed_in?
               = render "layouts/navbutton", name: "Sign up", path: new_user_registration_path
               = render "layouts/navbutton", name: "Sign in", path: new_user_session_path
