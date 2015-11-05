@@ -15,12 +15,13 @@ class Admin::UsersController < Admin::ApplicationController
   def create
   @user = User.new(user_params)
 
-  if @user.save
-    flash[:notice] = "User has been created."
-    redirect_to admin_users_path
-  else
-    flash.now[:alert] = "User has not been created."
-    render "new"
+    if @user.save
+      flash[:notice] = "User has been created."
+      redirect_to admin_users_path
+    else
+      flash.now[:alert] = "User has not been created."
+      render "new"
+    end
   end
 
   def edit
@@ -39,8 +40,6 @@ class Admin::UsersController < Admin::ApplicationController
       render "edit"
     end
   end
-
-end
 
 private
 
