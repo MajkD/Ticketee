@@ -5,3 +5,4 @@
   %ul.actions
     %li
       = link_to "Edit User", [:edit, :admin, @user], class: "edit"
+      = link_to "Archive User", [:archive, :admin, @user], method: :patch, data: { confirm: "Are you sure you want to archive this user?"}, class: "delete"
