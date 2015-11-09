@@ -16,7 +16,8 @@
     Tickets
 
     %ul.actions
-      = link_to "New Ticket", new_project_ticket_path(@project), class: "new"
+      - if policy(Ticket.new(project: @project)).create?
+        = link_to "New Ticket", new_project_ticket_path(@project), class: "new"
 
 %ul{'id'=>'tickets'}
   - @project.tickets.each do |ticket|
