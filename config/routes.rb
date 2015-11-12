@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
 
+  resources :attachments, only: [:show]
+
   namespace :admin do
     root "application#index"
 
