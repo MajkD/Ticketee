@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151111113218) do
+ActiveRecord::Schema.define(version: 20151117121432) do
 
   create_table "attachments", force: true do |t|
     t.string   "file"
@@ -21,6 +21,17 @@ ActiveRecord::Schema.define(version: 20151111113218) do
   end
 
   add_index "attachments", ["ticket_id"], name: "index_attachments_on_ticket_id", using: :btree
+
+  create_table "comments", force: true do |t|
+    t.text     "text"
+    t.integer  "ticket_id"
+    t.integer  "author_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_index "comments", ["author_id"], name: "index_comments_on_author_id", using: :btree
+  add_index "comments", ["ticket_id"], name: "index_comments_on_ticket_id", using: :btree
 
   create_table "projects", force: true do |t|
     t.string   "name"
@@ -73,6 +84,8 @@ ActiveRecord::Schema.define(version: 20151111113218) do
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
 
   Foreigner.load
+  add_foreign_key "comments", "users", name: "comments_author_id_fk", column: "author_id"
+
   add_foreign_key "tickets", "users", name: "tickets_author_id_fk", column: "author_id"
 
 end
