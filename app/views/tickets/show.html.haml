@@ -14,6 +14,12 @@
         %td
           = time_ago_in_words(@ticket.created_at)
           ago
+      - if @ticket.state.present?
+        %tr
+          %th
+            State:
+          %td
+            = render @ticket.state
 
   %header
     %h2
@@ -49,5 +55,3 @@
 
 - if policy(@comment).create?
   = render "comments/form", ticket: @ticket, comment: @comment
-
-        
