@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151120100314) do
+ActiveRecord::Schema.define(version: 20151124110506) do
 
   create_table "attachments", force: true do |t|
     t.string   "file"
@@ -26,12 +26,14 @@ ActiveRecord::Schema.define(version: 20151120100314) do
     t.text     "text"
     t.integer  "ticket_id"
     t.integer  "author_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",        null: false
+    t.datetime "updated_at",        null: false
     t.integer  "state_id"
+    t.integer  "previous_state_id"
   end
 
   add_index "comments", ["author_id"], name: "index_comments_on_author_id", using: :btree
+  add_index "comments", ["previous_state_id"], name: "index_comments_on_previous_state_id", using: :btree
   add_index "comments", ["ticket_id"], name: "index_comments_on_ticket_id", using: :btree
 
   create_table "projects", force: true do |t|
@@ -92,6 +94,7 @@ ActiveRecord::Schema.define(version: 20151120100314) do
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
 
   Foreigner.load
+  add_foreign_key "comments", "states", name: "comments_previous_state_id_fk", column: "previous_state_id"
   add_foreign_key "comments", "users", name: "comments_author_id_fk", column: "author_id"
 
   add_foreign_key "tickets", "users", name: "tickets_author_id_fk", column: "author_id"
