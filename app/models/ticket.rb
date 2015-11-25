@@ -7,6 +7,13 @@ class Ticket < ActiveRecord::Base
   validates :name, presence: true
   validates :description, presence: true, length: { minimum: 10 }
   validates :description, presence: true
+  before_create :assign_default_state
 
   accepts_nested_attributes_for :attachments, reject_if: :all_blank
+
+private
+
+  def assign_default_state
+    self.state ||= State.default
+  end
 end
