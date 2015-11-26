@@ -69,6 +69,19 @@ RSpec.feature "Users can create new tickets" do
     end
   end
 
+  scenario "with associated tags" do
+    fill_in "Name", with: "Non-standards compliance"
+    fill_in "Description", with: "My pages are ugly!"
+    fill_in "Tags", with: "browser visual"
+    click_button "Create Ticket"
+
+    expect(page).to have_content "Ticket has been created."
+    within("#ticket #tags") do
+      expect(page).to have_content "browser"
+      expect(page).to have_content "visual"
+    end
+  end
+
   # scenario "with multiple attachments", js: true do
   #   fill_in "Name", with: "Add documentation for blink tag"
   #   fill_in "Description", with: "The blink tag has a speed attribute"

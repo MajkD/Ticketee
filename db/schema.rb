@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151125104605) do
+ActiveRecord::Schema.define(version: 20151126133940) do
 
   create_table "attachments", force: true do |t|
     t.string   "file"
@@ -59,6 +59,18 @@ ActiveRecord::Schema.define(version: 20151125104605) do
     t.string  "color"
     t.boolean "default", default: false
   end
+
+  create_table "tags", force: true do |t|
+    t.string "name"
+  end
+
+  create_table "tags_tickets", id: false, force: true do |t|
+    t.integer "tag_id",    null: false
+    t.integer "ticket_id", null: false
+  end
+
+  add_index "tags_tickets", ["tag_id", "ticket_id"], name: "index_tags_tickets_on_tag_id_and_ticket_id", using: :btree
+  add_index "tags_tickets", ["ticket_id", "tag_id"], name: "index_tags_tickets_on_ticket_id_and_tag_id", using: :btree
 
   create_table "tickets", force: true do |t|
     t.string   "name"

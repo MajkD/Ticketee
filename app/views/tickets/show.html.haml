@@ -20,6 +20,12 @@
             State:
           %td
             = render @ticket.state
+      - if @ticket.tags.any?
+        %tr{'id' => 'tags'}
+          %th
+            Tags:
+          %td
+            = render @ticket.tags
 
   %header
     %h2
