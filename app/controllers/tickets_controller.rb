@@ -57,6 +57,17 @@ class TicketsController < ApplicationController
     authorize @ticket, :update?
   end
 
+  def search
+    authorize @project, :show?
+    if params[:search].present?
+      # @tickets = @project.tickets.search(params[:search])
+    else
+      # @tickets = @project.tickets
+    end
+
+    redirect_to :back
+  end
+
 private
 
   def set_ticket
