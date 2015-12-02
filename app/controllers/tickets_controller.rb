@@ -66,6 +66,7 @@ class TicketsController < ApplicationController
     end
 
     redirect_to :back
+    
   end
 
   def watch
