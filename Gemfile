@@ -25,6 +25,7 @@ gem 'database_cleaner', "~> 1.4"
 
 gem "puma", group: :production
 gem "pg", group: :production
+gem "rails_12factor", group: :production
 
 # Use jquery as the JavaScript library
 gem 'jquery-rails'
