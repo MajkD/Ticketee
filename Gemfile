@@ -5,7 +5,7 @@ ruby "2.1.4"
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.1.9'
 # Use sqlite3 as the database for Active Record
-gem 'mysql2'
+gem 'mysql2', group: :development
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 4.0.3'
 # Use Uglifier as compressor for JavaScript assets
@@ -24,6 +24,7 @@ gem "carrierwave", "~> 0.10.0"
 gem 'database_cleaner', "~> 1.4"
 
 gem "puma", group: :production
+gem "pg", group: :production
 
 # Use jquery as the JavaScript library
 gem 'jquery-rails'
