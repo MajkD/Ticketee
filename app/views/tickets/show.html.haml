@@ -26,6 +26,12 @@
             Tags:
           %td
             = render @ticket.tags, ticket: @ticket
+      %tr{'id'=>'watchers'}
+        %th
+          Watchers:
+          %td
+            = toggle_watching_button(@ticket)
+            = @ticket.watchers.map(&:email).to_sentence
 
   %header
     %h2
