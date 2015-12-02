@@ -23,8 +23,6 @@ gem "carrierwave", "~> 0.10.0"
 
 gem 'database_cleaner', "~> 1.4"
 
-gem "puma", group: :production
-
 # Use jquery as the JavaScript library
 gem 'jquery-rails'
 
