@@ -48,8 +48,6 @@ gem "devise", "~> 3.4.1"
 
 gem "pundit", "~> 0.3.0"
 
-gem "rails_12factor", group: :production
-
 group :development, :test do
   gem 'rspec-rails', '~> 3.2.1'
 end
