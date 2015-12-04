@@ -2,10 +2,17 @@ language: ruby
 rvm: 2.1.4
 sudo: required
 before_script:
-  - "bundle exec rake db:create RAILS_ENV=test"
-  - "bundle exec rake db:migrate RAILS_ENV=test"
-  - "bundle exec rake db:fixtures:load RAILS_ENV=test"
+- bundle exec rake db:create RAILS_ENV=test
+- bundle exec rake db:migrate RAILS_ENV=test
+- bundle exec rake db:fixtures:load RAILS_ENV=test
 script: bundle exec rspec
 before_install:
 - export display=:99.0
 - sh -e /etc/init.d/xvfb start
+deploy:
+  provider: heroku
+  api_key:
+    secure: G2lszxC2rCupVZJoMvUCQTPsjYqdhJLCz988c8h5HED38B2QSf8EnupEa5Hmgkf1DkwZinWDXdznZF+J7vHgkgLntyhNC0Zn12l+4Yqurio/PUQ9+T0MkujImCK6+Bj9m9k/4u/pW042EdBwUtIHOYRUK3Gpab8LsMbrQqer8yqOUOEBS5CzZPsu44kX30d5nJfCVSMg6LDC7PNJtD1rsMt2p9ePOjWZL+TpUzuwsF5LwdQEmRkxwZrzwAQWyRJWfTfSKOf7IQajKLmmSHXRFBPiFtwTyJSec0o5OQLUL/dQHv36bJt31bg4MAAWv+zoRxbvgqLGMQbLxXHgGOvENVBVKR/0nChzJVsaOIS6rvqKmm/NqYJXqVxc6D/UraN0Ep9mI24NlDnx7sFOFmtlbCNxFLIO33kHph5cKa8JRT44s+LOVVR0fU+xcR9jVEJkgEi35vNPtPMuRQxux5wqMwspnnJESamurEXD+8qpjmi4nmrTpsp3pHlHvfsU7ijeSxFpsBo0FAe9gKvkWE8hwVgAHttCvOG8Vo0mf/Mrvhu6mfIhogK0YRbIq5/czhgNDrDBcTrfjEqiyPgxl89gmpi6BgwHnzZbmlLgF711yDtnxuxLExySPZ70KsZPFxZt4F1vLofhmDNSOCQbM69JmR4AfSObXzpmSJvGJ6MAj5I=
+  app: safe-cliffs-1101
+  on:
+    repo: MajkD/Ticketee
