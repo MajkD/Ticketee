@@ -1,5 +1,6 @@
 language: ruby
 rvm: 2.1.4
+sudo: required
 before_script:
   - "bundle exec rake db:test:prepare"
 script: bundle exec rspec
