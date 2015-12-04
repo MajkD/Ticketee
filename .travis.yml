@@ -1,7 +1,7 @@
 language: ruby
 rvm: 2.1.4
 before_script:
-  - "rake db:test:prepare"
+  - "bundle exec rake db:test:prepare"
 script: bundle exec rspec
 before_install:
 - export display=:99.0
