@@ -8,7 +8,6 @@ class AttachmentsController < ApplicationController
   end
 
   def new
-    require 'pry'; binding.pry
     @ticket = Ticket.new
     @ticket.attachments.build
     @index = params[:index].to_i

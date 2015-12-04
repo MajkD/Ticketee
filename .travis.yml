@@ -1,0 +1,6 @@
+language: ruby
+rvm: 2.1.4
+script: bundle exec rspec
+before_install:
+- export display=:99.0
+- sh -e /etc/init.d/xvfb start
