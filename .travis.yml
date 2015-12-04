@@ -2,7 +2,9 @@ language: ruby
 rvm: 2.1.4
 sudo: required
 before_script:
-  - "bundle exec rake db:test:prepare"
+  - "bundle exec rake db:create RAILS_ENV=test"
+  - "bundle exec rake db:migrate RAILS_ENV=test"
+  - "bundle exec rake db:fixtures:load RAILS_ENV=test"
 script: bundle exec rspec
 before_install:
 - export display=:99.0
